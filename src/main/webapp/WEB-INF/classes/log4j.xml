@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j='http://jakarta.apache.org/log4j/'>
+    
+    <!-- CA = Console Aprender-->
+    <appender name="CA" class="org.apache.log4j.ConsoleAppender">
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%-4r [%t] %-5p %c %x - %m%n" />
+        </layout>
+    </appender>
+    
+    <!-- FA = File apprender -->
+    <appender name="FA" class="org.apache.log4j.RollingFileAppender">
+      <param name="Threshold" value="INFO" />
+      <param name="File" value="shout-mybatis.log"/>
+      <layout class="org.apache.log4j.PatternLayout">
+         <param name="ConversionPattern" value="%d
+                %-5p  [%c{1}] %m %n" />
+      </layout>
+   </appender>
+   
+    <!-- TEst_FA = File apprender for tests -->
+   <appender name="Test_FA" class="org.apache.log4j.RollingFileAppender">
+      <param name="Threshold" value="INFO" />
+      <param name="File" value="shout-mybatis-test.log"/>
+      <layout class="org.apache.log4j.PatternLayout">
+         <param name="ConversionPattern" value="%d
+                %-5p  [%c{1}] %m %n" />
+      </layout>
+   </appender>
+   
+    <!-- All logs in the package com.mybatis.mybatistest will log INFO messages into a file tests.log-->
+   <logger name="com.mybatis.mybatistest">
+        <level value="info"/> 
+        <appender-ref ref="Test_FA" />
+   </logger>
+   
+   <!--   All will be logged into console  -->
+   <root>
+        <level value="info" />
+        <appender-ref ref="CA" />
+   </root>
+   
+    
+</log4j:configuration>
+
+
+<!--
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd" >
+
+<log4j:configuration>
+ 
+   <appender name="consoleAppender"  class="org.apache.log4j.ConsoleAppender">
+      <param name="Threshold" value="INFO" />
+      <layout class="org.apache.log4j.PatternLayout">
+         <param name="ConversionPattern" value="%d
+             %-5p  [%c{1}] %m %n" />
+      </layout>
+   </appender>
+ 
+   <appender name="fileAppender" class="org.apache.log4j.RollingFileAppender">
+      <param name="Threshold" value="INFO" />
+      <param name="File" value="sample.log"/>
+      <layout class="org.apache.log4j.PatternLayout">
+         <param name="ConversionPattern" value="%d
+                %-5p  [%c{1}] %m %n" />
+      </layout>
+   </appender>
+ 
+   <logger name="javabeat.net.log4j" additivity="false" >
+      <level value="INFO" />
+      <appender-ref ref="consoleAppender"/>
+      <appender-ref ref="fileAppender"/>
+   </logger>
+ 
+</log4j:configuration>-->

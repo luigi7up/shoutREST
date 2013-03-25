@@ -5,10 +5,9 @@ import javax.ws.rs.ext.ExceptionMapper;
 import javax.ws.rs.ext.Provider;
 
 
-import com.shoutplatform.domain.Group;
 import com.sun.jersey.api.NotFoundException;
 import java.util.logging.Level;
-import java.util.logging.Logger;
+import org.apache.log4j.Logger;
 
 /*
  * Jersey provides a way of definibng your own Exception handlers through @Provide annotation and 
@@ -19,12 +18,12 @@ import java.util.logging.Logger;
 @Provider
 public class BadURIExceptionMapper implements ExceptionMapper<NotFoundException> {
 
-	private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(BadURIExceptionMapper.class.getName());
+	private static Logger log = Logger.getLogger(BadURIExceptionMapper.class.getName());
 	
         @Override
 	public Response toResponse(NotFoundException exception){
-            logger.log(Level.INFO, "{0} Client asked for an unknown resource {1}", new Object[]{exception.getClass().toString(), exception.getMessage()});            
+            log.info(exception.getClass()+": Client asked for an unknown resource. e.getMessage(): "+exception.getMessage());            
             // return Response.status(Response.Status.NOT_FOUND).entity(new ErrorResponse(exception.getClass().toString(), exception.getMessage())).build();
-            return Response.status(Response.Status.NOT_FOUND).build();
+            return Response.status(Response.Status.NOT_FOUND).entity("Guess we don't have this URI :( ").build();
 	}
 }

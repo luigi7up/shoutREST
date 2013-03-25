@@ -5,11 +5,9 @@ import javax.ws.rs.ext.ExceptionMapper;
 import javax.ws.rs.ext.Provider;
 
 
-import com.shoutplatform.domain.Group;
-import com.sun.jersey.api.NotFoundException;
 import com.sun.jersey.api.ParamException;
 import java.util.logging.Level;
-import java.util.logging.Logger;
+import org.apache.log4j.Logger;
 
 /*
  * Jersey provides a way of definibng your own Exception handlers through @Provide annotation and 
@@ -19,10 +17,11 @@ import java.util.logging.Logger;
  */
 @Provider
 public class BadParamExceptionMapper implements ExceptionMapper<ParamException> {
-	private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(BadURIExceptionMapper.class.getName());	
+	private static Logger log = Logger.getLogger(ExceptionMapper.class.getName());
+        
         @Override
 	public Response toResponse(ParamException exception){
-            logger.log(Level.INFO, "{0} Resource can't be identified with parameter provided {1}", new Object[]{exception.getClass().toString(), exception.getMessage()});            
+            log.info(exception.getClass().toString()+" Resource can't be identified with parameter provided. e.getMessage:"+exception.getMessage());            
             // return Response.status(Response.Status.NOT_FOUND).entity(new ErrorResponse(exception.getClass().toString(), exception.getMessage())).build();
             return Response.status(Response.Status.BAD_REQUEST).build();
 	}

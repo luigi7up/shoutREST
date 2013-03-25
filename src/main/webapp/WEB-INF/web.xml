@@ -8,13 +8,13 @@
     <init-param>
       <param-name>com.sun.jersey.config.property.packages</param-name>
       <!-- Tell Jersey where to scan for its JAXRS annotations -->
-      <param-value>com.shoutplatform.resources;com.shoutplatform.exceptions; org.codehaus.jackson.jaxrs</param-value>
+      <param-value>com.shoutplatform.restresources;com.shoutplatform.exceptions; org.codehaus.jackson.jaxrs</param-value>
     </init-param>    
     
     <!-- Enable Jackson POJO to JSON mapping - instead of JaxB -->
     <init-param>
- 		<param-name>com.sun.jersey.api.json.POJOMappingFeature</param-name>
-  		<param-value>true</param-value>
+        <param-name>com.sun.jersey.api.json.POJOMappingFeature</param-name>
+        <param-value>true</param-value>
     </init-param>
     
     <!--    GAE WAS GIVING CRITICAL EXCEPTION without this-->
