@@ -1,3 +1,4 @@
+
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
@@ -6,12 +7,16 @@
     <packaging>war</packaging>
     <version>0.0.1-SNAPSHOT</version>
     <name>shoutREST</name>
+    <description>These are the RESTful APIs for the ShoutPlatform project. Using them client apps can have access to the DB</description>
+    
     <build>
-        <finalName>resttest</finalName>
+        <finalName>shoutrest</finalName>
         
         <pluginManagement><!--  Eclipse marks a warning if this doesn0t exist -->
             <plugins>		        
+
                 <!-- GAE PLUGIN -->        	
+
                 <plugin>
                     <groupId>net.kindleit</groupId>
                     <artifactId>maven-gae-plugin</artifactId>
@@ -37,8 +42,8 @@
                         </execution>
                     </executions>
                 </plugin> 
-                <!-- END GAE PLUGIN -->
-				
+
+                <!-- END GAE PLUGIN -->	
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
@@ -71,16 +76,8 @@
     </build>
     
     <dependencies>	 
-        
-        <!--      JERSEY TESTING FRAMEWORK  -->
-        <dependency>
-            <groupId>com.sun.jersey</groupId>
-            <artifactId>jersey-test-framework</artifactId> 
-            <version>1.1.2-ea</version>
-         </dependency>
-        <!-- END JERSEY TESTING FRAMEWORK  -->
-        
-        <!-- GAE DEPEND. -->
+
+      <!-- GAE DEPEND. -->
         <dependency>
             <groupId>com.google.appengine</groupId>
             <artifactId>appengine-api-1.0-sdk</artifactId>
@@ -123,7 +120,22 @@
             <version>4.8.2</version>
             <scope>test</scope>
         </dependency>
-  	    
+        <dependency>
+                <groupId>org.mybatis</groupId>
+                <artifactId>mybatis</artifactId>
+                <version>3.1.1</version>
+        </dependency>    
+        <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>5.1.6</version>
+        </dependency>
+        <dependency>
+                <groupId>log4j</groupId>
+                <artifactId>log4j</artifactId>
+                <version>1.2.17</version>
+        </dependency>
+
         <dependency>
             <groupId>com.sun.jersey</groupId>
             <artifactId>jersey-client</artifactId>
@@ -156,7 +168,7 @@
             <url>http://download.java.net/maven/2</url>
             <layout>default</layout>
         </pluginRepository>
-        <!-- GAE PLUGIN REPO -->
+	<!-- GAE PLUGIN REPO -->
         <pluginRepository>
             <id>maven-gae-plugin-repo</id>
             <name>maven-gae-plugin repository</name>
@@ -169,10 +181,22 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-checkstyle-plugin</artifactId>
+                <version>5.6</version>
                 <configuration>
                     <configLocation>config/sun_checks.xml</configLocation>
                 </configuration>
             </plugin>
+        
+            <!--    GENERATING JAVADOS AS PART OF SITE DOCS-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>2.9</version>
+                <configuration>
+                    <!--  check http://maven.apache.org/plugins/maven-javadoc-plugin/usage.html for details-->
+                </configuration>
+            </plugin>
         </plugins>
     </reporting>
+
 </project>
