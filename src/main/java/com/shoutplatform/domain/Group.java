@@ -1,18 +1,14 @@
 package com.shoutplatform.domain;
 
 import java.util.ArrayList;
-import org.codehaus.jackson.annotate.JsonProperty;
-import org.codehaus.jackson.map.annotate.JsonSerialize;
+import javax.xml.bind.annotation.XmlRootElement;
 
 public class Group {    
 	private int id;
 	private String name;
 	private int unresolved;
-        
-        private ArrayList<Question> questions;
-
-   
-	public Group() {		
+    
+        public Group() {		
 	}
 	
 	public Group(int id, String name, int unresolved) {
@@ -22,16 +18,7 @@ public class Group {
 		this.unresolved = unresolved;
 	}
         
-        
-        
-        public ArrayList<Question> getQuestions() {
-            return questions;
-        }
-        public void setQuestions(ArrayList<Question> questions) {
-            this.questions = questions;
-        }
-
-	public int getId() {
+       	public int getId() {
 		return id;
 	}
 

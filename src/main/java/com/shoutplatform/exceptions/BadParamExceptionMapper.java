@@ -24,6 +24,6 @@ public class BadParamExceptionMapper implements ExceptionMapper<ParamException> 
 	public Response toResponse(ParamException exception){
             logger.log(Level.INFO, "{0} Resource can't be identified with parameter provided {1}", new Object[]{exception.getClass().toString(), exception.getMessage()});            
             // return Response.status(Response.Status.NOT_FOUND).entity(new ErrorResponse(exception.getClass().toString(), exception.getMessage())).build();
-            return Response.status(Response.Status.BAD_REQUEST).build();
+            return Response.status(Response.Status.BAD_REQUEST).entity("Wrong parameter").build();
 	}
 }

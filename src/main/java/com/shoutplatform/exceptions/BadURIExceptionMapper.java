@@ -25,6 +25,6 @@ public class BadURIExceptionMapper implements ExceptionMapper<NotFoundException>
 	public Response toResponse(NotFoundException exception){
             logger.log(Level.INFO, "{0} Client asked for an unknown resource {1}", new Object[]{exception.getClass().toString(), exception.getMessage()});            
             // return Response.status(Response.Status.NOT_FOUND).entity(new ErrorResponse(exception.getClass().toString(), exception.getMessage())).build();
-            return Response.status(Response.Status.NOT_FOUND).build();
+            return Response.status(Response.Status.NOT_FOUND).entity("Please check if the entity you asked for exists").build();
 	}
 }
