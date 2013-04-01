@@ -77,6 +77,14 @@
     
     <dependencies>	 
 
+		<!--      JERSEY TESTING FRAMEWORK  -->
+         <dependency>
+             <groupId>com.sun.jersey</groupId>
+             <artifactId>jersey-test-framework</artifactId> 
+             <version>1.1.2-ea</version>
+		</dependency>
+	<!-- END JERSEY TESTING FRAMEWORK  -->
+	
       <!-- GAE DEPEND. -->
         <dependency>
             <groupId>com.google.appengine</groupId>
@@ -124,6 +132,7 @@
                 <groupId>org.mybatis</groupId>
                 <artifactId>mybatis</artifactId>
                 <version>3.1.1</version>
+            <type>jar</type>
         </dependency>    
         <dependency>
                 <groupId>mysql</groupId>
