@@ -8,6 +8,7 @@
     
     <settings>
         <setting name="lazyLoadingEnabled" value="false" />
+<!--        <setting name="logImpl" value="LOG4J"/>-->
     </settings>
     
     <typeAliases>
@@ -30,6 +31,7 @@
     <!-- The mappers are Java interfaces that help Java know how to CRUD -->
     <mappers>    
         <mapper resource="CategoryMapper.xml" /> 
+        <mapper resource="QuestionMapper.xml" /> 
     </mappers>
   
 </configuration>

@@ -118,7 +118,7 @@
         <dependency>
                 <groupId>org.mybatis</groupId>
                 <artifactId>mybatis</artifactId>
-                <version>3.1.1</version>
+                <version>3.2.2</version>
         </dependency>    
         <dependency>
                 <groupId>mysql</groupId>
@@ -152,6 +152,7 @@
         <!-- GAE SDK VERSION -->
         <gae.version>1.7.4</gae.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <netbeans.hint.deploy.server>gfv3ee6</netbeans.hint.deploy.server>
     </properties>
         
     <repositories>        

@@ -30,9 +30,10 @@
    </appender>
    
     <!-- All logs in the package com.mybatis.mybatistest will log INFO messages into a file tests.log-->
-   <logger name="com.mybatis.mybatistest">
-        <level value="info"/> 
-        <appender-ref ref="Test_FA" />
+   <logger name="org.apache.ibatis">
+        <level value="debug"/> 
+        
+        <appender-ref ref="CA" />
    </logger>
    
    <!--   All will be logged into console  -->

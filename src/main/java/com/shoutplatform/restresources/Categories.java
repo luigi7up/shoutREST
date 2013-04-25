@@ -45,7 +45,7 @@ public class Categories{
     @GET    
     @Path("/{id}")     
     public Response getByPK(@PathParam("id") int id){        
-        
+        log.info("getting /categories/"+id);
         SqlSession sqlSession = MyBatisConnectionFactory.getSession().openSession();
         Category category = null;
         try{            

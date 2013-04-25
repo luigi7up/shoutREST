@@ -4,7 +4,9 @@
  */
 package com.shoutplatform.restresources;
 
+import com.shoutplatform.domain.Question;
 import com.shoutplatform.domain.dao.ICategoryDAO;
+import com.shoutplatform.domain.dao.IQuestionDAO;
 import com.shoutplatform.domain.dao.MyBatisConnectionFactory;
 import com.shoutplatform.domain.objects.Category;
 import java.util.List;
@@ -25,7 +27,7 @@ import org.apache.log4j.Logger;
 @Produces(MediaType.APPLICATION_JSON)
 public class Questions {
     
-    private static final Logger log = Logger.getLogger(Categories.class);
+    private static final Logger log = Logger.getLogger(Questions.class);
     /**
      * This method responds to GET /rest/questions/_id where _id is the ID of a question
      * you want to fetch the details for
@@ -35,20 +37,22 @@ public class Questions {
     @Path("/{id}")     
     public Response getByPK(@PathParam("id") int id){        
         
+        log.info("getting /questions/"+id);
+        
         SqlSession sqlSession = MyBatisConnectionFactory.getSession().openSession();
-        Category category = null;
+        Question question = null;
         try{            
-            ICategoryDAO categoryMapper = sqlSession.getMapper(ICategoryDAO.class);
-            category = categoryMapper.getCategoryWithQuestions(id);            
+            IQuestionDAO questionsMapper = sqlSession.getMapper(IQuestionDAO.class);
+            question = questionsMapper.getQuestionById(id);            
             sqlSession.commit();            
         }finally{
            sqlSession.close();
         }
         
-        if(category!=null){
-            return Response.status(Response.Status.OK).entity(category).build();
+        if(question!=null){
+            return Response.status(Response.Status.OK).entity(question).build();
         }else{
-            return Response.status(Response.Status.NOT_FOUND).entity("Category with "+id+" not found").build();
+            return Response.status(Response.Status.NOT_FOUND).entity("Question with "+id+" not found").build();
         }
     }
 }    

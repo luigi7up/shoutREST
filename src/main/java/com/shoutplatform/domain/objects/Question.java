@@ -6,6 +6,7 @@ public class Question {
    
     private Integer id;
     private String title;
+    private String text;
     private List<Category> categories;
 
     public Integer getId() {
@@ -19,6 +20,13 @@ public class Question {
     }
     public void setTitle(String title) {
         this.title = title == null ? null : title.trim();
+    }
+    
+    public String getText() {
+        return text;
+    }
+    public void setText(String text) {
+        this.text = text == null ? null : text.trim();
     }
     public List<Category> getCategories() {
         return categories;
